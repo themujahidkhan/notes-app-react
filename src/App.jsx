@@ -19,9 +19,30 @@ function App() {
       date: "1/4/23",
     },
   ]);
+
+  const addNote = (content) => {
+    const date = new Date();
+    const newNote = {
+      id: nanoid(),
+      content: content,
+      date: date.toLocaleDateString(),
+    };
+    const newNotes = [...notes, newNote];
+    setNotes(newNotes);
+  };
+
+  const deleteNote = (id) => {
+    const newNotes = notes.filter((note) => note.id !== id);
+    setNotes(newNotes);
+  };
+
   return (
     <div className="container mx-auto">
-      <NotesList notes={notes} />
+      <NotesList
+        notes={notes}
+        handleAddNote={addNote}
+        handleDeleteNote={deleteNote}
+      />
     </div>
   );
 }
