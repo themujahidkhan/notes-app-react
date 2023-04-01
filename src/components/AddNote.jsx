@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 
+import { useTheme } from "../context/ThemeContext";
+
 const AddNote = ({ handleAddNote }) => {
   const [notesText, setNotesText] = useState("");
+  const { theme } = useTheme();
   const characterLimit = 200;
 
   const handleChange = (e) => {
@@ -17,11 +20,19 @@ const AddNote = ({ handleAddNote }) => {
   };
 
   return (
-    <div className="h-80 w-96 bg-yellow-300 ease-in-out mt-8 p-4 rounded-lg flex flex-col justify-between">
+    <div
+      className={`h-80 w-96 ${
+        theme === "dark" ? "bg-[#777] text-white" : "bg-yellow-300 "
+      } ease-in-out mt-8 p-4 rounded-lg flex flex-col justify-between`}
+    >
       <textarea
         value={notesText}
         onChange={handleChange}
-        className="px-2 resize-none border-none bg-transparent focus:outline-none"
+        className={` px-2 resize-none border-none bg-transparent focus:outline-none ${
+          theme === "dark"
+            ? "placeholder:text-gray-300"
+            : " placeholder:text-slate-500"
+        }`}
         rows="8"
         cols="10"
         placeholder="Type to add note"
@@ -30,7 +41,14 @@ const AddNote = ({ handleAddNote }) => {
         <small className="text-sm">
           {characterLimit - notesText.length} Characters remaining
         </small>
-        <button className="bg-white px-2 rounded" onClick={handleSaveClick}>
+        <button
+          className={
+            theme === "dark"
+              ? "bg-white text-black px-2 rounded"
+              : "bg-black text-white px-2 rounded"
+          }
+          onClick={handleSaveClick}
+        >
           Save
         </button>
       </div>
