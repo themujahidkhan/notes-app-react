@@ -15,7 +15,7 @@ Dark Mode
 
 **Status**
 
-Production, [Live Demo]([https://](https://notes-app-nine-sepia.vercel.app/)) 
+Production, [Live Demo](https://notes-app-nine-sepia.vercel.app/) 
 
 **Tech Stack**
 
