@@ -17,7 +17,7 @@ const AddNote = ({ handleAddNote }) => {
   };
 
   return (
-    <div className="h-64 w-84 bg-yellow-300 ease-in-out mt-8 p-2 rounded-lg flex flex-col justify-between">
+    <div className="h-80 w-96 bg-yellow-300 ease-in-out mt-8 p-4 rounded-lg flex flex-col justify-between">
       <textarea
         value={notesText}
         onChange={handleChange}
@@ -27,7 +27,9 @@ const AddNote = ({ handleAddNote }) => {
         placeholder="Type to add note"
       ></textarea>
       <div className="flex justify-between items-center">
-        <small>{characterLimit - notesText.length} Characters remaining</small>
+        <small className="text-sm">
+          {characterLimit - notesText.length} Characters remaining
+        </small>
         <button className="bg-white px-2 rounded" onClick={handleSaveClick}>
           Save
         </button>
